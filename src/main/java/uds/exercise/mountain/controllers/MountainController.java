@@ -22,7 +22,7 @@ public class MountainController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Mountain> addMountain(Mountain mount){
+    public ResponseEntity<Mountain> addMountain(@RequestBody Mountain mount){
         mService.save(mount);
         return new ResponseEntity<>(mount, HttpStatus.OK);
     }
