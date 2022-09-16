@@ -28,13 +28,13 @@ public class MountainController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Long> deleteMountain(Long id){
+    public ResponseEntity<Long> deleteMountain(@RequestBody Long id){
         mService.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping("/edit")
-    public ResponseEntity<Mountain> updateMountain(Long id, String name){
+    public ResponseEntity<Mountain> updateMountain(@RequestBody Long id, String name){
         Mountain updateMountain = mService.findbyId(id).orElseThrow(() -> new ResourceNotFoundException("No mountain with id: " + id));
         updateMountain.setName(name);
         mService.save(updateMountain);
